@@ -174,11 +174,22 @@
                 </exclusion>
             </exclusions>
             <scope>test</scope>
-        </dependency>
+        </dependency>     
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
+        </dependency>
+        <dependency>
+             <groupId>io.jsonwebtoken</groupId>
+             <artifactId>jjwt</artifactId>
+              <version>0.9.1</version>
+        </dependency>
+
+<!-- Pour encoder les mots de passe -->
+        <dependency>
+              <groupId>org.springframework.security</groupId>
+              <artifactId>spring-security-crypto</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
