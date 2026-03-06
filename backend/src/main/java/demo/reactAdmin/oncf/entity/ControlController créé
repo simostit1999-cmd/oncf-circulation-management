@@ -1,0 +1,54 @@
+package demo.reactAdmin.oncf.entity;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "actions_correctives")
+public class ActionCorrective {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String reference; // Source ou référence
+
+    private String responsable;
+
+    private Date echeance;
+
+    private String statut; // À faire, En cours, Clôturé
+
+    private String indicateur; // en cours de jugement, à renforcer, efficace
+
+    @Column(length = 1000)
+    private String description;
+
+    private String fichierJoint; // chemin PDF ou photo
+
+    public ActionCorrective() {}
+
+    // Getters et Setters
+    public Long getId() { return id; }
+
+    public String getReference() { return reference; }
+    public void setReference(String reference) { this.reference = reference; }
+
+    public String getResponsable() { return responsable; }
+    public void setResponsable(String responsable) { this.responsable = responsable; }
+
+    public Date getEcheance() { return echeance; }
+    public void setEcheance(Date echeance) { this.echeance = echeance; }
+
+    public String getStatut() { return statut; }
+    public void setStatut(String statut) { this.statut = statut; }
+
+    public String getIndicateur() { return indicateur; }
+    public void setIndicateur(String indicateur) { this.indicateur = indicateur; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public String getFichierJoint() { return fichierJoint; }
+    public void setFichierJoint(String fichierJoint) { this.fichierJoint = fichierJoint; }
+}
