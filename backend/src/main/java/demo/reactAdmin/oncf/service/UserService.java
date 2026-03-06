@@ -20,6 +20,7 @@ public class UserService {
     // Enregistrer un nouvel utilisateur
     public User saveUser(User user) {
         // Chiffrer le mot de passe avant d’enregistrer
+        user.setRole("ROLE_" + user.getRole().toUpperCase());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
