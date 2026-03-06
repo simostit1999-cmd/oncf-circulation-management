@@ -21,6 +21,12 @@ public class SecurityConfig {
         http.csrf().disable()
             .authorizeHttpRequests()
             .requestMatchers("/api/auth/**").permitAll() // login et register autorisés
+            .requestMatchers("/api/users/**").hasRole("ADMIN") // gestion des utilisateurs réservée aux ADMIN
+            .requestMatchers("/api/controls/**").hasAnyRole("ADMIN","CADRE") // module contrôles
+            .requestMatchers("/api/actions/**").hasAnyRole("ADMIN","CADRE") // module actions
+            .requestMatchers("/api/rex/**").hasAnyRole("ADMIN","CADRE") // module REX
+            .requestMatchers("/api/risks/**").hasAnyRole("ADMIN","CADRE") // module risques
+            .requestMatchers("/api/rh/**").hasAnyRole("ADMIN","CADRE") // module RH
             .anyRequest().authenticated()
             .and()
             .addFilterBefore(jwtFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
