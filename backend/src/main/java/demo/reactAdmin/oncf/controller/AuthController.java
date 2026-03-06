@@ -12,7 +12,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
+    @Autowired
+    private JwtUtil jwtUtil;
     @Autowired
     private UserService userService;
 
@@ -35,7 +36,8 @@ public class AuthController {
         }
 
         // Ici on pourra générer un JWT pour sécuriser les requêtes
-        return ResponseEntity.ok("Connexion réussie pour : " + user.getUsername() + " avec rôle : " + user.getRole());
+        String token = jwtUtil.generateToken(user.getUsername(), user.getRole());
+        return ResponseEntity.ok(token);
     }
 
     // Inscription (optionnel pour ADMIN)
