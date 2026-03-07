@@ -16,7 +16,31 @@ import invoices from './invoices';
 import categories from './categories';
 import reviews from './reviews';
 import dataProvider from './dataProvider';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ControlsPage from "./pages/ControlsPage";
+import ActionsPage from "./pages/ActionsPage";
+import RexPage from "./pages/RexPage";
+import AnalysesPage from "./pages/AnalysesPage";
+import PersonnelPage from "./pages/PersonnelPage";
+import Dashboard from "./pages/Dashboard";
 
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/controls" element={<ControlsPage />} />
+        <Route path="/actions" element={<ActionsPage />} />
+        <Route path="/rex" element={<RexPage />} />
+        <Route path="/analyses" element={<AnalysesPage />} />
+        <Route path="/personnel" element={<PersonnelPage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
 const i18nProvider = polyglotI18nProvider(locale => {
     if (locale === 'fr') {
         return import('./i18n/fr').then(messages => messages.default);
